@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Room</title>
+    <style>
+        /* General styling for the page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 100%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #6e8efb;
+            outline: none;
+            box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #6e8efb;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #576dd8;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(0px);
+        }
+
+        .form-container input[type="file"] {
+            padding: 5px;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Add New Room</h1>
+        <form action="{{ url_for('add_room') }}" method="post" enctype="multipart/form-data">
+            <label for="room_type">Room Type:</label>
+            <input type="text" id="room_type" name="room_type" placeholder="Enter room type" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" placeholder="Enter price" required>
+
+            <label for="adults">Number of Adults:</label>
+            <input type="number" id="adults" name="adults" placeholder="Enter number of adults" required>
+
+            <label for="children">Number of Children:</label>
+            <input type="number" id="children" name="children" placeholder="Enter number of children" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Enter room description" required></textarea>
+
+            <label for="image">Room Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <button type="submit">Add Room</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

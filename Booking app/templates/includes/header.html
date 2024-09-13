@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Timber Resorts Booking{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Header styling */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            text-align: center;
+            position: fixed;
+        }
+
+        /* Filter section styling */
+        #filter-section {
+            margin-top: 60px; /* space for fixed header */
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        /* Main content and sidebar layout */
+        .main-container {
+            display: flex;
+            padding: 20px;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        #rooms-section {
+            flex: 1;
+        }
+
+        #contact-sidebar {
+            width: 300px; /* Adjust width as needed */
+            position: sticky;
+            top: 20px; /* Position it below the filter section */
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            #contact-sidebar {
+                width: 100%;
+                position: static;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Timber Resorts Booking</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </div>
+
+</body>
+</html>

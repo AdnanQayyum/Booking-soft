@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timber Resorts - Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Timber Resorts Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Timber Resorts</h1>
+            <p>Experience the best luxury resort in the mountains.</p>
+            <a href="#" class="cta">Book Now</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose Us?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/feature1.jpg') }}" alt="Feature 1">
+                <h3>Luxury Rooms</h3>
+                <p>Experience world-class comfort and luxury.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/feature2.jpg') }}" alt="Feature 2">
+                <h3>Mountain Views</h3>
+                <p>Breathtaking mountain views from every room.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/feature3.jpg') }}" alt="Feature 3">
+                <h3>Fine Dining</h3>
+                <p>Enjoy gourmet meals at our top-tier restaurant.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Timber Resorts. All rights reserved.</p>
+    </footer>
+</body>
+</html>

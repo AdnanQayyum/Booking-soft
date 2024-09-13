@@ -1,0 +1,610 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #555;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 3em;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f05a28;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.cta:hover {
+    background-color: #e14f24;
+}
+
+/* Features Section */
+.features {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+
+header {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Filter Section Styles */
+#filter-section {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#filter-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#filter-section label {
+    margin-right: 0.5rem;
+}
+
+#filter-section input[type="date"],
+#filter-section input[type="number"],
+#filter-section button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#filter-section button {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#filter-section button:hover {
+    background: linear-gradient(90deg, #0056b3, #00aaff);
+}
+
+/* Room Card Styles */
+#rooms-section {
+    margin: 1rem;
+}
+
+.room-card {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.room-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.room-info {
+    padding: 1rem;
+    flex: 1;
+}
+
+.room-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.booking-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.booking-form input[type="number"] {
+    width: 60px;
+}
+
+/* Reservation Sidebar Styles */
+#reservation-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-left: 2px solid #ddd;
+    padding: 1.5rem;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+#reservation-sidebar h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+#reservation-sidebar #selected-rooms {
+    margin-bottom: 1rem;
+}
+
+#reservation-sidebar button {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#reservation-sidebar button:hover {
+    background: linear-gradient(90deg, #0056b3, #00aaff);
+}
+
+.contact-location .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-location .card-header {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    padding: 1rem;
+}
+
+.contact-location .card-title {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.contact-location .card-content {
+    padding: 1rem;
+}
+
+.contact-location .row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-location .col-2 {
+    flex: 0 0 20%;
+}
+
+.contact-location .col-10 {
+    flex: 1;
+}
+
+.contact-location .img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-location a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-location a:hover {
+    text-decoration: underline;
+}
+
+/* Popup Styles */
+#reservation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reservation-popup form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reservation-popup button {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#reservation-popup button:hover {
+    background: linear-gradient(90deg, #0056b3, #00aaff);
+}
+
+
+
+/* Floating Button Styles */
+#view-reservations-btn {
+    position: fixed;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg); /* Rotate the button 90 degrees */
+    transform-origin: center; /* Ensure the button rotates around its center */
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+    transition: background 0.3s ease;
+
+}
+
+#view-reservations-btn:hover {
+    background: linear-gradient(90deg, #0056b3, #00aaff);
+}
+
+/* Reservation Sidebar Close Button */
+#reservation-sidebar .close-btn {
+    background: black;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Reservation Sidebar Styles */
+#reservation-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-left: 2px solid #ddd;
+    padding: 1.5rem;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    z-index: 999; /* Above normal content but below the floating button */
+}
+
+#reservation-sidebar h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+/* Reservation Popup Styles */
+#reservation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reservation-popup form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reservation-popup button {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#reservation-popup button:hover {
+    background: linear-gradient(90deg, #0056b3, #00aaff);
+}
+
+
+
+
+
+
+
+/* Right sidebar for Contact & Location */
+#contact-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* Adjust the width as per your layout */
+    height: 100%;
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1); /* Soft shadow for sidebar */
+    padding: 20px;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+/* General styling for the card */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 15px;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+}
+
+.contact-location address {
+    font-size: 0.9rem;
+}
+
+#view-reservations-btn {
+    /* Floating vertical button remains unchanged */
+}
+
+
+
+
+
+
+
+
+
+#filter-section {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1500px;
+    margin: 40px auto;
+ 
+}
+
+#filter-section form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Boxed style for inputs */
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    width: calc(20% - 10px); /* Adjusting for 5 elements to fit in a row */
+    background-color: white;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+input[type="date"],
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.number-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.number-input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.number-input input {
+    text-align: center;
+    width: 50px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    align-self: flex-end;
+    width: 150px;
+    height: 50px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}

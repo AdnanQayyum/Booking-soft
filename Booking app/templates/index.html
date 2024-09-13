@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+        header {
+            text-align: center;
+            background-color: #6e8efb;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        #filter-section {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #6e8efb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #576dd8;
+            transform: translateY(-3px);
+        }
+
+        #rooms-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        #rooms-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .room-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .room-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .room-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .room-info p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .booking-form input[type="number"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        aside {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: none;
+        }
+
+        aside h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .room-item {
+            margin-bottom: 15px;
+        }
+
+        .room-item p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        #reservation-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #reservation-popup form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hotel Booking</h1>
+    </header>
+    
+    <section id="filter-section">
+        <form method="POST">
+            <label for="check_in_date">Check-In Date:</label>
+            <input type="date" id="check_in_date" name="check_in_date" required>
+
+            <label for="check_out_date">Check-Out Date:</label>
+            <input type="date" id="check_out_date" name="check_out_date" required>
+
+            <label for="adults">Adults:</label>
+            <input type="number" id="adults" name="adults" min="1" required>
+
+            <label for="children">Children:</label>
+            <input type="number" id="children" name="children" min="0" required>
+
+            <button type="submit">Search Rooms</button>
+        </form>
+    </section>
+
+    <section id="rooms-section">
+        <h2>Available Rooms</h2>
+        <div id="rooms-container">
+            
+            <div class="room-card">
+                <img src="{{ url_for('static', filename=room['image']) }}" alt="{{ room['type'] }}" class="room-image">
+                <div class="room-info">
+                    <h3>{{ room['type'] }}</h3>
+                    <p>Price per Night: ${{ room['price'] }}</p>
+                    <p>Capacity: {{ room['capacity']['adults'] }} Adults, {{ room['capacity']['children'] }} Children</p>
+                    <p>{{ room['description'] }}</p>
+                    <form class="booking-form" data-room-id="{{ room['id'] }}" data-room-name="{{ room['type'] }}" data-room-price="{{ room['price'] }}">
+                        <label for="adults">Adults:</label>
+                        <input type="number" name="adults" min="1" max="{{ room['capacity']['adults'] }}" required>
+                        
+                        <label for="children">Children:</label>
+                        <input type="number" name="children" min="0" max="{{ room['capacity']['children'] }}" required>
+                        
+                        <input type="hidden" name="check_in_date" value="{{ request.form.get('check_in_date') }}">
+                        <input type="hidden" name="check_out_date" value="{{ request.form.get('check_out_date') }}">
+                        <button type="button" onclick="addToCart(this)">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+                
+        </div>
+    </section>
+
+    <!-- Reservation Sidebar -->
+    <aside id="reservation-sidebar">
+        <h2>Your Reservation</h2>
+        <div id="selected-rooms">
+            <!-- Reservation details will be dynamically inserted here -->
+        </div>
+        <p>Total Price: $<span id="total-price">0</span></p>
+        <button onclick="showReservationForm()">Complete Reservation</button>
+    </aside>
+
+    <!-- Popup Form -->
+    <div id="reservation-popup">
+        <form id="reservation-form">
+            <h2>Reservation Details</h2>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="mobile_no">Mobile No:</label>
+            <input type="text" id="mobile_no" name="mobile_no" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="special_requirements">Special Requirements:</label>
+            <textarea id="special_requirements" name="special_requirements"></textarea>
+
+            <button type="submit">Confirm Reservation</button>
+            <button type="button" onclick="closeReservationForm()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Hotel Booking</h1>
+    </header>
+    
+    <section id="filter-section">
+        <form method="POST">
+            <label for="check_in_date">Check-In Date:</label>
+            <input type="date" id="check_in_date" name="check_in_date" required><br><br>
+
+            <label for="check_out_date">Check-Out Date:</label>
+            <input type="date" id="check_out_date" name="check_out_date" required><br><br>
+
+            <label for="adults">Adults:</label>
+            <input type="number" id="adults" name="adults" min="1" required><br><br>
+
+            <label for="children">Children:</label>
+            <input type="number" id="children" name="children" min="0" required><br><br>
+
+            <button type="submit">Search Rooms</button>
+        </form>
+    </section>
+
+    <section id="rooms-section">
+        <h2>Available Rooms</h2>
+        <div id="rooms-container">
+            {% for room in rooms %}
+            <div class="room-card">
+                <img src="{{ url_for('static', filename=room['image']) }}" alt="{{ room['type'] }}" class="room-image">
+                <div class="room-info">
+                    <h3>{{ room['type'] }}</h3>
+                    <p>Price per Night: ${{ room['price'] }}</p>
+                    <p>Capacity: {{ room['capacity']['adults'] }} Adults, {{ room['capacity']['children'] }} Children</p>
+                    <p>{{ room['description'] }}</p>
+                    <form class="booking-form" data-room-name="{{ room['type'] }}" data-room-price="{{ room['price'] }}">
+                        <label for="adults">Adults:</label>
+                        <input type="number" name="adults" min="1" max="{{ room['capacity']['adults'] }}" required>
+                        
+                        <label for="children">Children:</label>
+                        <input type="number" name="children" min="0" max="{{ room['capacity']['children'] }}" required>
+                        
+                        <input type="hidden" name="check_in_date" value="{{ request.form.get('check_in_date') }}">
+                        <input type="hidden" name="check_out_date" value="{{ request.form.get('check_out_date') }}">
+                        <button type="button" onclick="addToCart(this)">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Reservation Sidebar -->
+    <aside id="reservation-sidebar">
+        <h2>Your Reservation</h2>
+        <div id="selected-rooms">
+            <!-- Reservation details will be dynamically inserted here -->
+        </div>
+        <p>Total Price: $<span id="total-price">0</span></p>
+        <button onclick="showReservationForm()">Complete Reservation</button>
+    </aside>
+
+    <!-- Popup Form -->
+    <div id="reservation-popup" style="display: none;">
+        <h2>Reservation Details</h2>
+        <form id="reservation-form">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required><br><br>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required><br><br>
+
+            <label for="mobile_no">Mobile No:</label>
+            <input type="text" id="mobile_no" name="mobile_no" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="special_requirements">Special Requirements:</label>
+            <textarea id="special_requirements" name="special_requirements"></textarea><br><br>
+
+            <button type="button" onclick="confirmReservation()">Confirm Reservation</button>
+            <button type="button" onclick="closeReservationForm()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
